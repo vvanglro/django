@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Persons_list</title>
+</head>
+<body>
+    <h3>Personslist</h3>
+
+<ul>
+    {% for person in persons %}
+        <li>姓名:{{ person.p_name }} 年龄{{ person.p_age }}</li>
+    {% endfor %}
+
+</ul>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Module_Case_Library</title>
+</head>
+<body>
+<ul>
+    {% for module in modules %}
+        <li><a href="{% url 'app:get_cases' module.id %}">{{ module.m_name }}</a></li>
+    {% endfor %}
+
+</ul>
+
+
+
+</body>
+</html>

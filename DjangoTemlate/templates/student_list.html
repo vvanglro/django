@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Studentlist</title>
+
+</head>
+<body>
+<ul>{% for student in students %}
+    <li>{{ student.s_name }}</li>
+    {# 当for循环没有数据时则可以用empty设置显示内容   #}
+{% empty %}
+    <h1>Sunck辍学了</h1>
+{% endfor %}
+</ul>
+
+<hr>
+
+<ul>{% for student in students %}
+    {#    forloop循环计数器#}
+    <li>{{ forloop.counter }}:{{ student.get_name }}</li>
+{% endfor %}
+</ul>
+
+<hr>
+{#.0 因为students返回的是queryset是列表所以可以用.0来获取第一个值#}
+<h3>{{ students.0.s_name }}</h3>
+
+<hr>
+
+<h3>{{ student_dict.hobby }}</h3>
+{#大小写#}
+<h3>{{ student_dict.hobby|lower }}</h3>
+<h3>{{ student_dict.hobby|upper }}</h3>
+
+<hr>
+<ul>
+    {% for student in students %}
+        {#        forloop.first获取循环的第一个值#}
+        {% if forloop.first %}
+            <li style="color: red;">{{ student.s_name }}</li>
+            {#        forloop.last获取循环的第一个值#}
+        {% elif forloop.last %}
+            <li style="color: green;">{{ student.s_name }}</li>
+        {% else %}
+            <li>{{ student.s_name }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<hr>
+<h4>{{ count }}</h4>
+{#乘除 widthratio 数✖ (分母 分子) 下边的意思的count乘以1分之5 结果就是25#}
+<h4>{% widthratio count 1 5 %}</h4>
+<h4>{% widthratio count 5 1 %}</h4>
+{#add是加2#}
+<h4>{{ count|add:2 }}</h4>
+<h4>{{ count|add:-2 }}</h4>
+
+<hr>
+
+<ul>
+    {% for student in students %}
+{#        能被2乘除的变绿色 其它的红色#}
+        {% if forloop.counter|divisibleby:2 %}
+            <li style="color: green">{{ student.s_name }}</li>
+        {% else %}
+            <li style="color: red">{{ student.s_name }}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+<hr>
+
+<ul>{% for student in students %}
+{#    ifequal判断是否等于5 等于5的则变绿色#}
+      {% ifequal forloop.counter 5 %}
+          <li style="color: blue">{{ student.s_name }}</li>
+      {% else %}
+          <li style="color: coral">{{ student.s_name }}</li>
+      {% endifequal %}
+
+{% endfor %}
+</ul>
+
+<hr>
+{#<p>{{ code|safe }}</p>#}
+
+
+</body>
+</html>

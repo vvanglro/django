@@ -1,0 +1,13 @@
+{% extends 'base_user.html' %}
+
+{% block content %}
+    <div>
+
+        <h4>激活失败或已过期,请重新申请激活</h4>
+        <form method="post" action="{% url 'axf:reactivate' %}">
+            {% csrf_token %}
+            <input name="username" type="text" placeholder="请输入需要重新激活的用户名">
+            <button type="submit">申请激活</button>
+        </form>
+    </div>
+{% endblock %}

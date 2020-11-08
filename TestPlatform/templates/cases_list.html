@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Case_List</title>
+
+
+</head>
+<body>
+
+<ul>{% for case in case_list %}
+    <li>
+        用例名称:{{ case.c_name }}<br>调用方式:{{ case.c_method }}<br>url:{{ case.c_url }}<br>请求头:{{ case.c_header }}<br>请求数据:{{ case.c_data }}<br>返回状态码:{{ case.c_code }}<br>期望结果:{{ case.c_result }}
+    </li>
+        <br>
+        <form target="iframe{{ case.id }}" action="{% url 'app:run_case' case.id %}" method="post">
+            <button>执行</button>
+            {% csrf_token %}
+            <table border="1" cellspacing="10" cellpadding="20" style="width:300px; height:40px;">
+                <tr>
+                    <th colspan="2">OutPut</th>
+                </tr>
+                <tr>
+                    <td width="280px">
+                        <iframe name="iframe{{ case.id }}"></iframe>
+                    </td>
+                </tr>
+            </table>
+
+        </form>
+        <br>
+
+    {% endfor %}
+    </ul>
+    <br>
+
+
+
+</body>
+</html>

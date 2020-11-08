@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GradeStudentlist</title>
+</head>
+<body>
+
+<ul>{% for student in student_list %}
+    <li><a href="{% url 'second:get_studentpage' student.id%}">{{ student.s_name }}</a></li>
+    {% endfor %}
+</ul>
+
+<form action="{% url 'second:add_student' %}" method="post">
+    {% csrf_token %}
+    学生名字:<input type="text" name="学生名字"> <br>
+    班级ID  :<input type="text" name="班级ID"> <br>
+    <input type="submit" value="提交">
+
+</form>
+
+</body>
+</html>
+

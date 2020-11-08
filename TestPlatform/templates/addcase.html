@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add_Case</title>
+</head>
+<body>
+
+<form action="{% url 'app:addcase' %}" method="post">
+    {% csrf_token %}
+    <select name="模块">
+        {% for foo in m_name %}
+            <option value="{{ foo.m_name }}">{{ foo.m_name }}</option>
+        {% endfor %}
+
+    </select>
+    <br>
+    <br>
+    <span>用例名称:</span><input type="text" style="width:250px; height:30px;" name="用例名称" placeholder="请输入用例名称">
+    <br>
+    <br>
+    <span>调用方式:</span><input type="text" style="width:200px; height:20px;" name="调用方式" placeholder="请输入调用方式">
+    <br>
+    <br>
+    <span>url:</span><input type="text" style="width:800px; height:25px;" name="url" placeholder="请输入url">
+    <br>
+    <br>
+    <span>请求头:</span><input type="text" style="width:550px; height:90px;" name="请求头" placeholder="请输入请求头">
+    <br>
+    <br>
+    <span>请求数据:</span><input type="text" style="width:550px; height:90px;" name="请求数据" placeholder="请输入请求数据">
+    <br>
+    <br>
+    <span>返回状态码:</span><input type="text" style="width:200px; height:20px;" name="返回状态码" placeholder="请输入返回状态码">
+    <br>
+    <br>
+    <span>期望结果:</span><input type="text" style="width:400px; height:50px;" name="期望结果" placeholder="请输入期望结果">
+    <br>
+    <br>
+    <button>提交</button>
+</form>
+
+
+</body>
+</html>
